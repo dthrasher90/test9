@@ -1,38 +1,103 @@
-.App {
-  text-align: center;
+*{
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.tableContainer{
+
+  padding-left: 20px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+
+table {
+    /* border-spacing: 0;
+    border-collapse: collapse; */
+
+    height: 100px;
+
+}
+table td, #lines-interface table thead th {
+   text-align: right;
+   padding: 5px 15px;
+   line-height: 17px;
+   font-size: 12px;
+   white-space: nowrap;
+   border-right: 1px solid #eee;
+   vertical-align: middle;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+thead{
+  display: table-header-group;
+  vertical-align: middle;
+  border-color: inherit;
+  border-bottom: 7px;
+  line-height: 40px;
+  border-bottom: #eee 1px solid!important;
+  box-shadow: 0 3px 6px -2px #aaa!important;
+  height: 45px;
 }
 
-.App-link {
-  color: #61dafb;
+th{
+
+  vertical-align: top;
+  border-top: 1px solid #ddd;
+  height: 45px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+
+/* h2{
+    font-family: arial;
+    font-weight: 700;
+    text-align: left;
+    margin-bottom: 7px;
+} */
+
+.header_row{
+  background-color: white;
+  margin-bottom: 20px;
+  height: 45px;
+  padding:  20px;
+
+}
+.header_main_teams{
+
+  background-color: #eee;
+  width: 85px;
+
+
+}
+.header_main_books{
+  background-color: #eee;
+  font-size: 11px;
+
+}
+
+
+
+
+.content_teams{
+
+  display: inline-block;
+  height: 45px;
+  width: 145px;
+  align: left;
+  font-size: 10px;
+  background-color: #fff;
+  border-left: 1px #eee solid;
+  margin-left: -2px;
+
+
+
+
+}
+
+.content_books{
+
+  height: 45px;
+  width: 85px;
+  align: left;
+  font-size: 10px;
+  background-color: #fff;
+  border-left: 1px #eee solid;
+  margin-left: -2px;
 }
