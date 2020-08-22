@@ -1,9 +1,9 @@
 import React from 'react';
 import axios from 'axios';
-import { Table } from 'react-bootstrap';
+import { Table, Navbar, Image} from 'react-bootstrap';
 import './App.css';
+import navIcon from  './navicon.jpg';
 
-//
 
 export default class App extends React.Component {
 
@@ -12,18 +12,22 @@ export default class App extends React.Component {
   }
 
   async  componentDidMount(){
- let NFLApi = 'https://api.the-odds-api.com/v3/odds/?apiKey=56ad61c3cfdfd7b9d6ffc700dd08be39&sport=americanfootball_nfl&region=us&mkt=spreads'
-
-
-  const res = await axios.get(NFLApi);
-
-   this.setState({  teams : res.data.data  })
-   // console.log(res.data.data)
-
+    let NFLApi = 'https://api.the-odds-api.com/v3/odds/?apiKey=56ad61c3cfdfd7b9d6ffc700dd08be39&sport=americanfootball_nfl&region=us&mkt=spreads'
+    const res = await axios.get(NFLApi);
+    this.setState({  teams : res.data.data  })
  }
+
+  renderNav() {
+    return(
+    <Navbar className= "navbar" bg="dark"  fixed="top">
+      <img className = "navIcon" src={navIcon} />
+
+    </Navbar>
+  )}
+
+
+
   renderTableData(){
-
-
     const game = Object.values(this.state.teams)
     console.log(game)
     let nflweek1 = []
@@ -56,11 +60,14 @@ export default class App extends React.Component {
             nflweek1.push(item)
         }
     });
-    console.log(nflweek1)
+
+
+
 
     return   nflweek1.map((item, key) => {
 
             return(
+
               <tr key = {key}>
                 <td className = "content_teams">  {item.teams[0]} <br /> {item.teams[1]} </td>
 
@@ -76,23 +83,27 @@ export default class App extends React.Component {
 
 
     return (
-      <div className = "tableContainer">
-        <h2>  NFL Lines Week 1 </h2>
-        <Table   size="sm" className = "nflWeek1">
-          <thead>
-            <tr classname = "header_row">
-              <th className = "header_main_teams"> Match </th>
-              <th className = "header_main_books"> MyBookie </th>
-              <th className = "header_main_books"> Draft Kings </th>
-              <th className = "header_main_books"> Fan Duel </th>
-            </tr>
-          </thead>
-            <tbody>
+    <div className = "container">
+      {this.renderNav()}
+          <div className = "tableContainer">
+            <h2>  NFL Lines Week 1 </h2>
+            <Table   size="sm" className = "nflWeek1">
+              <thead>
+                <tr classname = "header_row">
+                  <th className = "header_main_teams"> Match </th>
+                  <th className = "header_main_books"> MyBookie </th>
+                  <th className = "header_main_books"> Draft Kings </th>
+                  <th className = "header_main_books"> Fan Duel </th>
+                </tr>
+              </thead>
+                <tbody>
 
-              {this.renderTableData()}
-            </tbody>
-        </Table>
-      </div>
+                  {this.renderTableData()}
+                </tbody>
+            </Table>
+          </div>
+
+    </div>
     )
   }
 }
